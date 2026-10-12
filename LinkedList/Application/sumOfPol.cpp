@@ -120,3 +120,7 @@ int main() {
 
     return 0;
 }
+// Time complexity: O(n+m ) ( every node in both linked list is visited once)
+// Space complexity O(n+m) ( total space )   
+// worst case: every exp is distinct from each other
+// where n and m and no of nodes in pol1 and pol2 respectively
