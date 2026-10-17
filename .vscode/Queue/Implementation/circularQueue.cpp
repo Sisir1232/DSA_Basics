@@ -33,7 +33,7 @@ public:
 
         rear = (rear + 1) % SIZE;
         arr[rear] = value;
-    }
+    }                                             // Time complexity:O(1) 
 
     void dequeue() {
         // Queue is empty
@@ -49,7 +49,7 @@ public:
             front = rear = -1;            // resetting the pointers
         } else {
             front = (front + 1) % SIZE;
-        }
+        }                                       // Time complexity:O(1) 
     }
 
     void peek() {
@@ -59,7 +59,7 @@ public:
         }
 
         cout << "Front element: " << arr[front] << endl;
-    }
+    }                                                     // Time complexity:O(1) 
 
     void display() {
         if (front == -1) {
@@ -80,7 +80,7 @@ public:
         }
 
         cout << endl;
-    }
+    }                                  // Time complexity:O(n) 
 };
 
 int main() {
