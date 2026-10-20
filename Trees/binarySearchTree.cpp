@@ -1,7 +1,10 @@
-// Implementation of Binary Search Tree including insertion , creation , deletion, searching and traversals
-// Key insights: In linked list , one data points to another data and creates a link.... 
-            // : To extend this relationship , in tree one node can point to different nodes creating a child-parent relationship
-            // : In Binary Search Tree, the no of child a node can have is MAX 2 
+// Implementation of Binary Search Tree including insertion, creation,
+// deletion, searching and traversals
+
+// Key insights:
+// In linked list, one data points to another data and creates a link.
+// In a tree, one node can point to different nodes, creating a child-parent relationship.
+// In a Binary Search Tree, a node can have a maximum of 2 children.
 
 #include <iostream>
 using namespace std;
@@ -23,10 +26,10 @@ class BST
 
     Node* root;
 
-    // Insert a node recursively ... search the suitable position in which node follows < > relationship
+    // Insert a node recursively
     Node* insert(Node* node, int value)
     {
-        if (node == nullptr)        // first node to the tree 
+        if (node == nullptr)
             return new Node(value);
 
         if (value < node->data)
@@ -66,7 +69,8 @@ class BST
     {
         if (node == nullptr)
             return nullptr;
-     // Find a node whose value is desired to be deleted 
+
+        // Find the node whose value is to be deleted
         if (value < node->data)
             node->left = deleteNode(node->left, value);
         else if (value > node->data)
@@ -90,13 +94,46 @@ class BST
             }
 
             // Case 3: Two children
-            // Here we can either find min from right subtree (sucessor) or max from left subtree (predecessor)
+            // Replace with inorder successor (minimum in right subtree)
             Node* temp = findMin(node->right);
             node->data = temp->data;
             node->right = deleteNode(node->right, temp->data);
         }
 
         return node;
+    }
+
+    // Inorder: Left -> Root -> Right
+    void inorder(Node* node)
+    {
+        if (node == nullptr)
+            return;
+
+        inorder(node->left);
+        cout << node->data << " ";
+        inorder(node->right);
+    }
+
+    // Preorder: Root -> Left -> Right
+    void preorder(Node* node)
+    {
+        if (node == nullptr)
+            return;
+
+        cout << node->data << " ";
+        preorder(node->left);
+        preorder(node->right);
+    }
+
+    // Postorder: Left -> Right -> Root
+    void postorder(Node* node)
+    {
+        if (node == nullptr)
+            return;
+
+        postorder(node->left);
+        postorder(node->right);
+        cout << node->data << " ";
     }
 
 public:
@@ -111,10 +148,6 @@ public:
         for (int i = 0; i < size; i++)
             root = insert(root, values[i]);
     }
-   
-// The reason why we need indirect recurison is because for first recursive call we need to send the root 
-// And if we use default arg , there is no recursion 
-// so either create a different method or pass it in main function in arg 
 
     // Public insertion method
     void insert(int value)
@@ -133,6 +166,25 @@ public:
     {
         root = deleteNode(root, value);
     }
+
+    // Public traversal methods
+    void inorder()
+    {
+        inorder(root);
+        cout << endl;
+    }
+
+    void preorder()
+    {
+        preorder(root);
+        cout << endl;
+    }
+
+    void postorder()
+    {
+        postorder(root);
+        cout << endl;
+    }
 };
 
 int main()
@@ -149,6 +201,15 @@ int main()
         cout << "Element found" << endl;
     else
         cout << "Element not found" << endl;
+
+    cout << "Inorder: ";
+    tree.inorder();
+
+    cout << "Preorder: ";
+    tree.preorder();
+
+    cout << "Postorder: ";
+    tree.postorder();
 
     return 0;
 }
