@@ -1,4 +1,7 @@
-
+// Implementation of self balanced AVL Tree 
+// Key insight: Upon inserting the node, if it becomes skewed ( bf=2), then rotate the nodes accordingly
+   // Types of rotation: LL , RR , LR, RL 
+   
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -10,7 +13,7 @@ class AVL
         int data;
         Node *left;
         Node *right;
-        int height;
+        int height;     // to check tree is balanced or not 
 
         Node(int value)
         {
@@ -193,52 +196,6 @@ class AVL
 
         return node;
     }
-
-    // Search for a value
-    bool search(Node *node, int value)
-    {
-        if (node == nullptr)
-            return false;
-
-        if (node->data == value)
-            return true;
-
-        if (value < node->data)
-            return search(node->left, value);
-
-        return search(node->right, value);
-    }
-
-    void inorder(Node *node)
-    {
-        if (node == nullptr)
-            return;
-
-        inorder(node->left);
-        cout << node->data << " ";
-        inorder(node->right);
-    }
-
-    void preorder(Node *node)
-    {
-        if (node == nullptr)
-            return;
-
-        cout << node->data << " ";
-        preorder(node->left);
-        preorder(node->right);
-    }
-
-    void postorder(Node *node)
-    {
-        if (node == nullptr)
-            return;
-
-        postorder(node->left);
-        postorder(node->right);
-        cout << node->data << " ";
-    }
-
 public:
     void insert(int value)
     {
@@ -250,28 +207,6 @@ public:
         root = deleteNode(root, value);
     }
 
-    bool search(int value)
-    {
-        return search(root, value);
-    }
-
-    void inorder()
-    {
-        inorder(root);
-        cout << endl;
-    }
-
-    void preorder()
-    {
-        preorder(root);
-        cout << endl;
-    }
-
-    void postorder()
-    {
-        postorder(root);
-        cout << endl;
-    }
 };
 
 int main()
@@ -285,22 +220,6 @@ int main()
     tree.insert(40);
     tree.insert(50);
 
-    cout << "Inorder: ";
-    tree.inorder();
-
-    cout << "Preorder: ";
-    tree.preorder();
-
-    cout << "Postorder: ";
-    tree.postorder();
-
-    cout << "Search 25: ";
-    cout << (tree.search(25) ? "Found" : "Not Found") << endl;
-
     tree.deleteValue(20);
-
-    cout << "After deleting 20: ";
-    tree.inorder();
-
     return 0;
 }
