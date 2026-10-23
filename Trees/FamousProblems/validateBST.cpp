@@ -1,5 +1,5 @@
 // Problem: Validate a Binary Search Tree
-
+// Key insight: answer is that node which contains both targets as different side children 
 // Approach 1: Brute force, at every node compare with the max of the left subtree
 //             and the min of the right subtree (found by walking down the pointers)
 //             Time O(n * h), O(n^2) , Space O(h) call stack
