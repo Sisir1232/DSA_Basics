@@ -91,8 +91,8 @@ Time and space refer to the optimal approach in each file. Most files also inclu
 | Detect a cycle | slow and fast pointers | O(n) | O(1) | [cycleDetect.cpp](LinkedList/FamousProblems/cycleDetect.cpp) |
 | Middle of a linked list | slow and fast pointers | O(n) | O(1) | [middlePart.cpp](LinkedList/FamousProblems/middlePart.cpp) |
 | Reorder list | middle, reverse, merge | O(n) | O(1) | [reorderList.cpp](LinkedList/FamousProblems/reorderList.cpp) |
-| Polynomial addition | linked list of terms | see file | see file | [sumOfPol.cpp](LinkedList/FamousProblems/sumOfPol.cpp) |
-| Polynomial multiplication | linked list of terms | see file | see file | [mulOfPol.cpp](LinkedList/FamousProblems/mulOfPol.cpp) |
+| Polynomial addition | linked list of terms | O(n+m) | O(n+m) | [sumOfPol.cpp](LinkedList/FamousProblems/sumOfPol.cpp) |
+| Polynomial multiplication | linked list of terms | O(nm^2) | O(n*m) | [mulOfPol.cpp](LinkedList/FamousProblems/mulOfPol.cpp) |
 | Balanced parentheses | stack | O(n) | O(n) | [balanceParenthesis.cpp](Stack/FamousProblems/balanceParenthesis.cpp) |
 | Palindrome check | stack | O(n) | O(n) | [pallindromeCheck.cpp](Stack/FamousProblems/pallindromeCheck.cpp) |
 | Infix to postfix | stack | O(n) | O(n) | [postfixConv.cpp](Stack/FamousProblems/postfixConv.cpp) |
